@@ -3,28 +3,34 @@ import run from "aocrunner";
 const parseInput = (rawInput: string) => rawInput;
 
 const elf = (str: string) => {
-  return str.split('\n').map(x => parseInt(x, 10)).reduce((arr, crv) => arr + crv);
+  return str.split('\n')
+    .map(x => parseInt(x, 10))
+    .reduce((arr, crv) => arr + crv);
 };
 
 const part1 = (rawInput: string) => {
-  const input = parseInput(rawInput);
-  const total = input.split('\n\n');
-  const elves = total.map((x) => elf(x));
+  const input = parseInput(rawInput).split('\n\n');
 
+  const elves = input.map((x) => elf(x));
 
   return elves.sort((a, b) => {
     return b - a;
   })[0];
-
 };
 
 const part2 = (rawInput: string) => {
-  const input = parseInput(rawInput);
+  const input = parseInput(rawInput)
+    .split('\n\n')
+    .map((x) => {
+      return x.split('\n')
+        .map(x => parseInt(x, 10))
+        .reduce((arr, crv) => arr + crv);
+    })
+    .sort((a, b) => b - a);
 
-  const totals = input.split('\n\n').map((x) => {
-    return x.split('\n').map(x => parseInt(x, 10)).reduce((arr, crv) => arr + crv);
-  }).sort((a, b) => b - a);
-  let top = totals.slice(0, 3).reduce((acc, crv) => acc + crv);
+  const top = input
+    .slice(0, 3)
+    .reduce((acc, crv) => acc + crv);
   return top;
 };
 
