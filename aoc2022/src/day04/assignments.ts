@@ -1,13 +1,38 @@
-function assignments (input: string) {
+export default function assignments (fn: (pair: number[][]) => number, input: string) {
   let total = 0;
-  const pairsOfRanges = input.split('\n');
 
-  const ranges = pairsOfRanges.map(x => createPairAssignment(x));
+  const ranges = input.split('\n').map(x => createPairAssignment(x));
 
   for (let i = 0; i < ranges.length; i++) {
-    total += measureAssignment(ranges[i]);
+    total += fn(ranges[i]);
   }
   return total;
+}
+
+
+export function measureAssignment (pair: number[][]) {
+  let a = pair[0];
+  let b = pair[1];
+
+  if (a[0] <= b[0] && b[1] <= a[1]) {
+    return 1;
+  } else if (b[0] <= a[0] && a[1] <= b[1]) {
+    return 1;
+  }
+  return 0;
+}
+
+
+export function measureOverlap (pair: number[][]) {
+  let a = pair[0];
+  let b = pair[1];
+
+  if (a[0] <= b[0] && a[1] >= b[0]) {
+    return 1;
+  } else if (b[0] <= a[0] && b[1] >= a[0]) {
+    return 1;
+  }
+  return 0;
 }
 
 
@@ -18,18 +43,3 @@ function createPairAssignment (str: string) {
   });
   return values;
 }
-
-
-function measureAssignment (pair: number[][]) {
-  let one = pair[0];
-  let two = pair[1];
-
-  if (one[0] <= two[0] && one[1] >= two[1]) {
-    return 1;
-  } else if (one[0] >= two[0] && one[1] <= two[1]) {
-    return 1;
-  }
-  return 0;
-}
-
-export default assignments;

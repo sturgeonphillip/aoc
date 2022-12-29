@@ -1,22 +1,20 @@
 import run from "aocrunner";
-import assignments from './assignments.js';
+import assignments, { measureAssignment, measureOverlap } from './assignments.js';
 import cases from './tests.js';
 
 const parseInput = (rawInput: string) => rawInput;
 
 const part1 = (rawInput: string) => {
   const input = parseInput(rawInput);
-  let total = 0;
-  let result = assignments(input);
-  console.log('result', result);
+  const result = assignments(measureAssignment, input);
   return result;
 
 };
 
 const part2 = (rawInput: string) => {
   const input = parseInput(rawInput);
-
-  return;
+  const result = assignments(measureOverlap, input);
+  return result;
 };
 
 run({
@@ -31,10 +29,10 @@ run({
   },
   part2: {
     tests: [
-      // {
-      //   input: ``,
-      //   expected: "",
-      // },
+      {
+        input: cases.B.in,
+        expected: cases.B.expect,
+      },
     ],
     solution: part2,
   },

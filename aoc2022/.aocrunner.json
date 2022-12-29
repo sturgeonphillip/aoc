@@ -60,13 +60,15 @@
           "731",
           "681"
         ],
-        "time": 1.0205
+        "time": 0.989875
       },
       "part2": {
-        "solved": false,
-        "result": null,
-        "attempts": [],
-        "time": null
+        "solved": true,
+        "result": "931",
+        "attempts": [
+          "752"
+        ],
+        "time": 1.06625
       }
     },
     {

@@ -8,32 +8,12 @@ Task description: [link](https://adventofcode.com/2022/day/4)
 
 ### Attempts
 
+part 1:
   too low: 339, 547
   too high: 731
-  unknownf : 681
+  unknown : 681
 
+part 2:
+  too low: 752
 
-```TS
-function measureAssignment (pair: number[][]) {
-  let one = pair[0];
-  let two = pair[1];
-// 731 (too high)
-  if (one[0] <= two[0] && one[1] > two[1]) {
-    return 1;
-  } else if (one[0] < two[0] && one[1] >= two[1]) {
-    return 1;
-  } else if (one[0] >= two[0] && one[1]  two[1]) {
-    return 1;
-  } else if (one[0] > two[0] && one[1] >= two[1]) {
-    return 1;
-  }
-  return 0;
-//
-
-
-
-}
-
-```
-
-...
+... 
